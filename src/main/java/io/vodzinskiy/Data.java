@@ -3,8 +3,8 @@ package io.vodzinskiy;
 import java.util.Arrays;
 
 public class Data {
-    public final static int N = 16;
-    public final static int P = 4;
+    public final static int N = 4;
+    public final static int P = 2;
     public final static int H = N/P;
 
     public int a;
@@ -48,7 +48,7 @@ public class Data {
     }
 
     //максимальний елемент часткового вектора
-    public int manSubVectorElement(int[] X, int id) {
+    public int maxSubVectorElement(int[] X, int id) {
         int start = (id - 1) * H;
         int end = id * H;
         int min = Integer.MIN_VALUE;
@@ -76,5 +76,6 @@ public class Data {
             }
             A[i] = a * Z[i] + sum * b;
         }
+
     }
 }
