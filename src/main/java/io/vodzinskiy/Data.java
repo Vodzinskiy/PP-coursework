@@ -3,8 +3,8 @@ package io.vodzinskiy;
 import java.util.Arrays;
 
 public class Data {
-    public final static int N = 32;
-    public final static int P = 8;
+    public final static int N = 4;
+    public final static int P = 1;
     public final static int H = N / P;
 
     public int a;

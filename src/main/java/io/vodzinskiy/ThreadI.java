@@ -19,18 +19,16 @@ public class ThreadI extends Thread {
                 data.inputVector(data.C);
                 data.inputVector(data.Z);
                 data.inputMatrix(data.MX);
-                // синхронізація при введенні даних
-                monitor.inputAwait();
-            } else if (id == Data.P) {
+            }
+            if (id == Data.P) {
                 // введення даних для потоку Р
                 data.inputVector(data.D);
                 data.inputMatrix(data.MR);
-                // синхронізація при введенні даних
-                monitor.inputAwait();
-            } else {
-                // синхронізація при введенні даних
-                monitor.inputAwait();
             }
+
+            // синхронізація при введенні даних
+            monitor.inputAwait();
+
             // обчислення ai та bi
             int ai = data.minSubVectorElement(data.C, id);
             int bi = data.maxSubVectorElement(data.Z, id);
