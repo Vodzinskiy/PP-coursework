@@ -15,29 +15,33 @@ public class ThreadI extends Thread {
         System.out.printf("Thread %d started\n", id);
         try {
             if (id == 1) {
+                // введення даних для потоку 1
                 data.inputVector(data.C);
                 data.inputVector(data.Z);
                 data.inputMatrix(data.MX);
-
+                // синхронізація при введенні даних
                 monitor.inputAwait();
             } else if (id == Data.P) {
+                // введення даних для потоку Р
                 data.inputVector(data.D);
                 data.inputMatrix(data.MR);
-
+                // синхронізація при введенні даних
                 monitor.inputAwait();
             } else {
+                // синхронізація при введенні даних
                 monitor.inputAwait();
             }
-
+            // обчислення ai та bi
             int ai = data.minSubVectorElement(data.C, id);
             int bi = data.maxSubVectorElement(data.Z, id);
-
+            // синхронізація при обчисленні ai та bi
             monitor.writeABAndAwait(ai, bi);
-
+            // обчислення A_H
             data.calculationA(id);
-
+            // синхронізація при виводі результату
             monitor.outputAwait();
             if (id == 1) {
+                // вивід результату першим потоком
                 data.printResult();
             }
         } catch (InterruptedException e) {
