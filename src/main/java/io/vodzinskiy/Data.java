@@ -3,8 +3,8 @@ package io.vodzinskiy;
 import java.util.Arrays;
 
 public class Data {
-    public final static int N = 4;
-    public final static int P = 2;
+    public final static int N = 16;
+    public final static int P = 4;
     public final static int H = N/P;
 
     public int a;
@@ -69,13 +69,12 @@ public class Data {
             int sum = 0;
             for (int j = 0; j < N; j++) {
                 int mr_times_mx = 0;
-                for (int k = start; k < end; k++) {
+                for (int k = 0; k < N; k++) {
                     mr_times_mx += MR[i][k] * MX[k][j];
                 }
                 sum += D[j] * mr_times_mx;
             }
             A[i] = a * Z[i] + sum * b;
         }
-
     }
 }
